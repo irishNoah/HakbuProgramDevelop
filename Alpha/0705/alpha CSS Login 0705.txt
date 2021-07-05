@@ -1,0 +1,161 @@
+.sizelab-wrapper.wrapper-member.devicePC {
+    min-height: 100%;
+}
+
+.wrapper-member {
+    min-width: 320px;
+    height: 100%;
+    min-height: 100%;
+}
+
+.sizelab-wrapper {
+    min-width: 320px;
+}
+
+a, body, button, div, form, h1, h2, h3, h4, h5, h6, html, i, iframe, img, input, p, span {
+    margin: 0;
+    padding: 0;
+}
+
+button {
+    cursor: pointer;
+}
+html, body {
+    height: 100%;
+}
+
+
+body {
+    font-size: 14px;
+    font-family: '-apple-system',HelveticaNeue,Roboto,"Noto Sans KR",helvetica,Gulim,sans-serif;
+    line-height: 1.5;
+    color: #000;
+    background-color: #F2F2F2;
+    display:table;
+}
+.header {
+    display:table-row;width:100%;height:1px;
+}
+.container {
+  background-color: white;
+    display:table-row;
+}
+
+.container {
+  width: 100%;
+  max-width: 375px;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+.sizelab-wrapper.wrapper-member.devicePC .n-member-area {
+    max-width: 375px;
+    min-height: 705px!important;
+    padding-top: 62px;
+}
+
+.n-member-area {
+    position: relative;
+    box-sizing: border-box;
+    max-width: 385px;
+    min-height: 100%;
+    margin: 0 auto;
+    padding: 0 15px 100px 15px;
+}
+
+.header--tab {
+    height: 95px;
+    margin-top: 15%;
+}
+
+.header {
+    z-index: 500;
+    height: 50px;
+    background: #fff;
+    line-height: 50px;
+}
+
+article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section {
+    display: block;
+}
+
+.sizelab-wrapper.wrapper-member.devicePC .n-member-area .header__area {
+    display: block;
+    position: static;
+}
+
+.header__area {
+    display: flex;
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+    z-index: 500;
+    height: 50px;
+    background-color: #fff;
+    line-height: 50px;
+    justify-content: center;
+}
+
+.header-tab {
+    display: flex;
+    position: fixed;
+    top: 50px;
+    right: 0;
+    left: 0;
+    z-index: 500;
+    height: 45px;
+    background-color: #fff;
+}
+
+.sizelab-wrapper.wrapper-member.devicePC .n-member-area {
+    max-width: 375px;
+    min-height: 705px!important;
+    padding-top: 62px;
+}
+
+.n-input {
+    box-sizing: border-box;
+    box-sizing: border-box!important;
+    width: 100%;
+    height: 50px;
+    padding: 0 9px 0 9px;
+    border: 1px solid #e5e5e5;
+    /* background-color: #fff; */
+    font-size: 15px;
+    transition: border .2s ease-in-out;
+    -webkit-appearance: none;
+}
+
+.n-btn {
+    display: block;
+    box-sizing: border-box;
+    width: 100%;
+    height: 50px;
+    padding: 1px 10px 0 10px;
+    border: 1px solid #000;
+    font-size: 14px;
+    line-height: 47px;
+    color: #fff;
+    text-align: center;
+}
+
+.n-btn.btn-accent {
+    border-color: #000;
+    background-color: #000;
+}
+
+.n-member-area .login-form .n-btn, .n-member-area .login-form .n-input {
+    margin-top: 15px;
+}
+
+.n-member-area .login-form .login-help-feature .login-util>a {
+    margin: 0 3px;
+}
+.n-member-area .login-util>a {
+    display: inline-block;
+    margin: 0 6px;
+    padding: 5px;
+    color: #aaa;
+    vertical-align: middle;
+}
