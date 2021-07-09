@@ -1,0 +1,127 @@
+<!docctype html>
+<html>
+    <head>
+        <title>StyleLab Test</title>
+        <meta charset="utf-8">
+	    <meta name="keywords" content="HTML5, CSS, JQUERY">
+        
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        
+        <!--글자폰트-->
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Nanum+Gothic+Coding&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Hi+Melody&family=Nanum+Gothic+Coding&family=Sunflower:wght@300&display=swap" rel="stylesheet">
+
+        <!--이모티콘-->
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.2/css/all.css">
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.2/css/v4-shims.css">
+        
+        <link rel ="stylesheet" type ="text/css" href ="CSS/main.css">
+    </head>
+    
+    <body>
+        <div class="primary">
+            <div>
+                <span><a href="" target="_blank"><i class="fas fa-sign-in-alt"></i>로그인</a></span> 
+                <span><a href="" target="_blank"><i class="fas fa-sign-out-alt"></i>로그아웃</a></span>
+                <span><a href="" target="_blank"><i class="fas fa-heart"></i>찜</a></span>
+                <span><a href="" target="_blank"><i class="fas fa-user-cog"></i>설정</a></span>
+                <span><a href="" target="_blank"><i class="fas fa-id-badge"></i>계정</a></span>
+            </div>            
+        </div>
+        <!-- 헤더영역 시작  -->
+        <header class="header">
+            <span id="logo">
+                <div>SIZELAB</div>
+            </span>
+            <span class = "box">
+                <div class="container-1">
+                  <span class="icon"><i class="fa fa-search"></i></span>
+                  <input type="search" id="search" placeholder="Search..." />
+                </div>
+            </span>
+		</header>
+		<!-- 헤더영역 끝 -->
+        
+        <!-- 콘텐츠 및 섹션 영역 시작 -->
+        <div class="content_div">
+            <article>
+                <header>
+                    <div class="tab_content">
+                        <input type ="radio" name ="tabmenue" id="tab01"checked>
+                        <label for ="tab01"><h3 style="color:red;">추천</h3></label>
+                        <input type ="radio" name ="tabmenue" id="tab02">
+                        <label for ="tab02"><h3>니트</h3></label>
+                        <input type ="radio" name ="tabmenue" id="tab03">
+                        <label for ="tab03"><h3>자켓</h3></label>
+                        <input type ="radio" name ="tabmenue" id="tab04">
+                        <label for ="tab04"><h3>롱슬리브</h3></label>
+                        <input type ="radio" name ="tabmenue" id="tab05">
+                        <label for ="tab05"><h3>셔츠</h3></label>
+                        <input type ="radio" name ="tabmenue" id="tab06">
+                        <label for ="tab06"><h3>가디건 </h3></label>
+                        <input type ="radio" name ="tabmenue" id="tab07">
+                        <label for ="tab07"><h3>후드티 </h3></label>
+                        <input type ="radio" name ="tabmenue" id="tab08">
+                        <label for ="tab08"><h3>후드집업</h3></label>
+                        <input type ="radio" name ="tabmenue" id="tab09">
+                        <label for ="tab09"><h3>맨투맨</h3></label>
+                        
+                        <div class="conbox con1">추천 페이지입니다. </div>
+                            
+                        <div class="conbox con2">니트 페이지입니다.</div>
+                        
+                        <div class="conbox con3">자켓 페이지입니다. </div>
+                        
+                        <div class="conbox con4">롱슬리브 페이지입니다.</div>
+                        
+                        <div class="conbox con5">셔츠 페이지입니다. </div>
+                        
+                        <div class="conbox con6">가디건 페이지입니다.</div>
+                        
+                        <div class="conbox con7">후드티 페이지입니다.</div>
+                        
+                        <div class="conbox con8">후드집업 페이지입니다.</div>
+                        
+                        <div class="conbox con9">맨투맨 페이지입니다.</div>
+                        
+                    </div>
+                </header>
+            </article>
+
+        </div>
+        <!-- 콘텐츠 및 섹션 영역 끝 -->
+        
+        <!-- 푸터 영역 시작 -->
+        <div class="footer">
+            <footer>
+                <b>
+                    <font color="white">footer 태그: 사이트의 제작자, 주소, 저작권 정보등을 주로표시</font>
+                </b>
+                <details>
+                    <!-- summary태그는 크롬 브라우저에서 작동한다. 익스플로러 브라우저에서는 작동 안됨 -->
+                    <summary style="color: white;">
+                        <font color="white">Copyright</font>
+                    </summary>
+                    <p>
+                        <font color="white">이 홈페이지의 저작권은 박창영 에게~~</font>
+                    </p>
+                </details>
+            </footer>
+        </div>
+        <!-- 푸터 영역 끝 -->
+        
+        <!--
+        <div class="sidenav">
+          <a href="#about">About</a>
+          <a href="#services">Services</a>
+          <a href="#clients">Clients</a>
+          <a href="#contact">Contact</a>
+        </div>
+        -->
+        
+    </body>
+
+    
+</html>
