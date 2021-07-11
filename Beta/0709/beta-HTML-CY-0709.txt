@@ -1,0 +1,170 @@
+<!docctype html>
+<html>
+    <head>
+        <title>StyleLab Test</title>
+        <meta charset="utf-8">
+	    <meta name="description" content="프로젝트_01">
+	    <meta name="keywords" content="HTML5, CSS, JQUERY">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        
+        <!--글자폰트-->
+        <link rel="preconnect" href="https://fonts.gstatic.com">
+        <link href="https://fonts.googleapis.com/css2?family=Jua&display=swap" rel="stylesheet">
+        
+        <!--이모티콘-->
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.2/css/all.css">
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.2/css/v4-shims.css">
+        
+        
+        <link rel ="stylesheet" type ="text/css" href ="test2.css">
+        <!--외부 스타일시트와 연결-->
+        
+    </head>
+    
+   <body>
+        <div class="primary">
+            <div>
+                <span>
+                    <!-- sign-in-alt 아이콘 -->                
+                    <i class="fas fa-sign-in-alt"></i>
+                    <a href="" target="_blank">로그인</a>
+                </span> 
+                <span>
+                    <!-- sign-out-alt 아이콘 -->             
+                    <i class="fas fa-sign-out-alt"></i>
+                    <a href="" target="_blank">로그아웃</a>
+                </span>
+                <span>
+                    <!-- shopping-cart 아이콘 --> 
+                    <i class="fas fa-shopping-cart"></i>
+                    <a href="" target="_blank">찜</a>
+                </span>
+                <span>
+                    <!-- cog 아이콘 --> 
+                    <i class="fas fa-cog"></i>
+                    <a href="" target="_blank">설정</a>
+                </span>
+                <span>
+                    <!-- user-circle 아이콘 --> 
+                    <i class="fas fa-user-circle"></i>
+                    <a href="" target="_blank">계정</a>
+                </span>
+            </div>            
+        </div>
+        <!-- 헤더영역 시작  -->
+        <header class="header">
+            <div id="logo">
+                <div><h1>SIZELAB</h1></div>
+            </div>
+            <div class="box">
+                <div class="container-1">
+                  <span class="icon"><i class="fa fa-search"></i></span>
+                  <input type="search" id="search" placeholder="Search..." />
+                </div>
+            </div>
+		</header>
+		<!-- 헤더영역 끝 -->
+        
+        <!-- 콘텐츠 및 섹션 영역 시작 -->
+        <div class="content_div">
+            <article>
+                <header>
+                    <div class="tab_content">
+                        <input type ="radio" name ="tabmenue" id="tab01"checked>
+                        <label for ="tab01"><h2>추천</h2></label>
+                        <input type ="radio" name ="tabmenue" id="tab02">
+                        <label for ="tab02"><h2>니트</h2></label>
+                        <input type ="radio" name ="tabmenue" id="tab03">
+                        <label for ="tab03"><h2>자켓</h2></label>
+                        <input type ="radio" name ="tabmenue" id="tab04">
+                        <label for ="tab04"><h2>롱슬리브</h2></label>
+                        <input type ="radio" name ="tabmenue" id="tab05">
+                        <label for ="tab05"><h2>셔츠</h2></label>
+                        
+                        <input type ="radio" name ="tabmenue" id="tab06">
+                        <label for ="tab05"><h2>안녕</h2></label>
+                        <input type ="radio" name ="tabmenue" id="tab07">
+                        <label for ="tab05"><h2>안녕</h2></label>
+                        <input type ="radio" name ="tabmenue" id="tab08">
+                        <label for ="tab05"><h2>안녕</h2></label>
+                        <input type ="radio" name ="tabmenue" id="tab09">
+                        <label for ="tab05"><h2>안녕</h2></label>
+                        <input type ="radio" name ="tabmenue" id="tab10">
+                        <label for ="tab05"><h2>안녕</h2></label>
+                        <input type ="radio" name ="tabmenue" id="tab11">
+                        <label for ="tab05"><h2>안녕</h2></label>
+                        <input type ="radio" name ="tabmenue" id="tab12">
+                        <label for ="tab05"><h2>안녕</h2></label>
+                         
+                        <input type ="radio" name ="tabmenue" id="tab13">
+                        <label for ="tab05"><h2>안녕</h2></label>
+                        <input type ="radio" name ="tabmenue" id="tab14">
+                        <label for ="tab05"><h2>안녕</h2></label>
+                        <input type ="radio" name ="tabmenue" id="tab15">
+                        <label for ="tab05"><h2>안녕</h2></label>
+                        <input type ="radio" name ="tabmenue" id="tab16">
+                        <label for ="tab05"><h2>안녕</h2></label>
+                        <input type ="radio" name ="tabmenue" id="tab17">
+                        <label for ="tab05"><h2>안녕</h2></label>
+                        <input type ="radio" name ="tabmenue" id="tab18">
+                        <label for ="tab05"><h2>안녕</h2></label>
+                        <input type ="radio" name ="tabmenue" id="tab19">
+                        <label for ="tab05"><h2>안녕</h2></label>
+                        <input type ="radio" name ="tabmenue" id="tab20">
+                        <label for ="tab05"><h2>안녕</h2></label>
+                        <input type ="radio" name ="tabmenue" id="tab21">
+                        <label for ="tab05"><h2>안녕</h2></label>
+                        <input type ="radio" name ="tabmenue" id="tab22">
+                        <label for ="tab05"><h2>안녕</h2></label>
+                        
+                        <div class="conbox con1">
+                            맨투맨
+                        </div>
+                            
+                        <div class="conbox con2">니트</div>
+                        
+                        <div class="conbox con3">자켓</div>
+                        
+                        <div class="conbox con4">롱슬리브</div>
+                        
+                        <div class="conbox con5">셔츠</div>
+                        
+                    </div>
+                </header>
+            </article>
+
+        </div>
+        <!-- 콘텐츠 및 섹션 영역 끝 -->
+        
+        <!-- 푸터 영역 시작 -->
+        <div class="footer">
+            <footer>
+                <b>
+                    <font color="white">footer 태그: 사이트의 제작자, 주소, 저작권 정보등을 주로표시</font>
+                </b>
+                <details>
+                    <!-- summary태그는 크롬 브라우저에서 작동한다. 익스플로러 브라우저에서는 작동 안됨 -->
+                    <summary style="color: white;">
+                        <font color="white">Copyright</font>
+                    </summary>
+                    <p>
+                        <font color="white">이 홈페이지의 저작권은 박창영 에게~~</font>
+                    </p>
+                </details>
+            </footer>
+        </div>
+        <!-- 푸터 영역 끝 -->
+        
+        <!--
+        <div class="sidenav">
+          <a href="#about">About</a>
+          <a href="#services">Services</a>
+          <a href="#clients">Clients</a>
+          <a href="#contact">Contact</a>
+        </div>
+        -->
+        
+    </body>
+
+    
+</html>
