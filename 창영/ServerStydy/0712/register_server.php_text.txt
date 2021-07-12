@@ -1,0 +1,82 @@
+<?php
+
+/* db.php에 있는 변수를 이 php에서도 사용하기 위해서 선언
+만약 include를 사용안하고 다른 파일에 있는 변수를 여기에서도 선언 후
+사용 시 error 발생 */
+include('db.php'); 
+
+if(isset($_POST['user_id']) && isset($_POST['user_nick']) && isset($_POST['pass1']) && isset($_POST['pass2'])){
+    // 보안을 더욱 강화(secure 코딩, 보안 코딩)
+    $user_id = mysqli_real_escape_string($db, $_POST['user_id']); //남이 함부로 sql을 변경할 수 없도록 함
+    $user_nick = mysqli_real_escape_string($db, $_POST['user_nick']);
+    $pass1 = mysqli_real_escape_string($db, $_POST['pass1']);
+    $pass2 = mysqli_real_escape_string($db, $_POST['pass2']);
+
+    // 에러를 체크
+    if(empty($user_id)){//user_id에 대한 에러 체크
+        /* 
+        alert('아이디가 비어있습니다'); 자체만 존재한다면
+        회원이 아이디 입력을 안하고 저장 누를 경우
+        다음 화면에 '아이디가 비어있습니다'라는 팝업창만 존재하게 됨.
+        따라서 팝업창에 "확인 버튼을 눌렀을 때 다시 회원가입 화면으로 돌아가게
+        하기 위해서는 history.back();이 필요함"
+        */
+        /*
+        echo 
+        "<script>
+        alert('아이디가 비어있습니다');
+        history.back();
+        </script>";
+        */
+        header("location: register_view.php?error=아이디가 비어있습니다");
+        exit();
+    }
+    else if(empty($user_nick)){//user_nick에 대한 에러 체크
+        /* 
+        echo  
+        "<script>
+        alert('닉네임이 비어있습니다');
+        location.replace('register_view.php');
+        </script>";
+        */
+        header("location: register_view.php?error=닉네임이 비어있습니다");
+        exit();
+    }
+    /* 
+    history.back();과 location.replace();의 차이점
+    history.back();은 되돌아온 개념, 즉 브라우저 어딘가에 흔적을 남김
+    location.replace();은 되돌아오는 것이 아니라 경로를 이동, 즉 흔적을 남기지 않음
+    둘 중 무엇을 사용하든 상관 없으나
+    대부분의 개발자는 경로를 이동시키는 location.replace();을 더 많이 사용함
+    */
+    else if(empty($pass1)){//pass1에 대한 에러 체크
+        /*
+        location: register_view.php?error=비밀번호가 비어있습니다"에서
+        location:은 절대 띄어쓰기 하면 안 됨(예 > location : > 바로 에러 나타남)
+        */
+        header("location: register_view.php?error=비밀번호가 비어있습니다");
+        exit();
+    }
+    else if(empty($pass2)){//pass2에 대한 에러 체크
+        header("location: register_view.php?error=비밀번호 확인란이 비어있습니다");
+        exit();
+    }
+    else if($pass1 !== $pass2){//비밀번호 입력란과 확인란이 동일한지 확인해 봄
+        header("location: register_view.php?error=비밀번호가 일치하지 않습니다.");
+        exit();
+    }
+    else {
+        //저장시키는 코딩 부분
+    }
+
+    //저장시키는 코딩
+
+
+
+
+}
+else{
+    // 에러 메시지
+}
+
+?>
