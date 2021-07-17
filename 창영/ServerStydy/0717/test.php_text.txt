@@ -1,0 +1,20 @@
+<?php
+
+//반드시 이 형식을 지키면서 하는 게 보안상 좋음
+function test_input($sum){
+    trim($sum);
+    stripslashes($sum);
+    htmlspecialchars($sum);
+    return $sum;
+}
+
+$user_id = test_input($_POST['user_id']);
+$user_nick = test_input($_POST['user_nick']);
+$pass1 = test_input($_POST['pass1']);
+$pass2 = test_input($_POST['pass2'] );
+
+// filtering 필터리 -> 이용자가 입력한 값에서 문제가 발생하는 것을 차단하는 행위
+// 이스케이핑 -> 이미 저장되어 있는 값을 이용자에게 다시 읽어줄 때 발생할 수 있는 문제를 차단하는 행위
+
+
+?>

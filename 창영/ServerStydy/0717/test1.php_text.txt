@@ -1,0 +1,23 @@
+<?php
+
+// B 개발자가 사용한 3개의 함수
+// trim(), stripslashes(), htmlspecialchars()
+
+echo '<br><br>=========== trim() ===========<br><br>';
+echo '<br>';
+
+$str1 = "     abc 123 abc 123 abc     "; // 양 옆에 공백 5개씩을 넣었음
+echo $str1; // 출력 화면에서는 양 옆에 공백이 나타나지 않음
+echo '<br>';
+echo strlen($str1); //그러나 $str1 자체의 문자열 길이는 29, 즉 양 옆의 공백까지 넣어 센다는 것을 알 수 있음.
+/*
+이를 통해 아무 대처 없이 str1을 사용하다보면 화면상에 나오는 것과
+SQL상 나오는 것이 달라질 수 있다는 것이므로 추후에 문제가 발생할 수 있음을 암시
+*/
+echo '<br>';
+echo trim($str1); //trim();은 문자열 시작 전과 이후에 있는 공백을 없애주는 함수임
+echo '<br>';
+$trim = trim($str1);
+echo strlen($trim); // 트림된 것을 통해 문자열의 길이를 구하면 양 옆 공백은 감안하지 않은 문자열의 길이가 출력됨
+
+?>

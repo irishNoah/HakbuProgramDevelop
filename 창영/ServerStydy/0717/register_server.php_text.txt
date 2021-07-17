@@ -1,0 +1,96 @@
+<?php
+/* db.php에 있는 변수를 이 php에서도 사용하기 위해서 선언
+만약 include를 사용안하고 다른 파일에 있는 변수를 여기에서도 선언 후
+사용 시 error 발생 */
+include('db.php'); 
+
+if(isset($_POST['user_id']) && isset($_POST['user_nick']) && isset($_POST['pass1']) && isset($_POST['pass2'])){
+    // 보안을 더욱 강화(secure 코딩, 보안 코딩)
+    $user_id = mysqli_real_escape_string($db, $_POST['user_id']); //남이 함부로 sql을 변경할 수 없도록 함
+    $user_nick = mysqli_real_escape_string($db, $_POST['user_nick']);
+    $pass1 = mysqli_real_escape_string($db, $_POST['pass1']);
+    $pass2 = mysqli_real_escape_string($db, $_POST['pass2']);
+
+    //주소창 get
+    /* 회원이 회원가입이나 로그인 시 정보를 다 기재했지만 단 하나를 기재 못하고
+    저장이나 로그인 버튼을 클릭할 시 기재했던 정보도 다 날라간다면 고객 입장에서는
+    매무 불편할 수 없다. 따라서 기재를 한 항목에 대해서는 저장이나 로그인 버튼을 클릭해도
+    없어지지 않게 구현하는 것이 좋다. */
+    $user_info = "user_id=".$user_id."&user_nick=".$user_nick;
+
+// if(isset($_POST['save'])){//여기가 B 개발자 스타일로 개발해보는 것임
+//     // 보안을 더욱 강화(secure 코딩, 보안 코딩)
+//     function test_input($sum){ //반드시 이 형식을 지키면서 하는 게 보안상 좋음
+//         trim($sum);
+//         stripslashes($sum);
+//         htmlspecialchars($sum);
+//         return $sum;
+//     }
+    
+//     $user_id = test_input($_POST['user_id']);
+//     $user_nick = test_input($_POST['user_nick']);
+//     $pass1 = test_input($_POST['pass1']);
+//     $pass2 = test_input($_POST['pass2'] );
+
+
+    // 에러를 체크
+    if(empty($user_id)){//user_id에 대한 에러 체크
+        header("location: register_view.php?error=아이디가 비어있습니다&$user_info");
+        exit();
+    }
+    else if(empty($user_nick)){//user_nick에 대한 에러 체크
+        header("location: register_view.php?error=닉네임이 비어있습니다&$user_info");
+        exit();
+    }
+    else if(empty($pass1)){//pass1에 대한 에러 체크
+        /*
+        location: register_view.php?error=비밀번호가 비어있습니다"에서
+        location:은 절대 띄어쓰기 하면 안 됨(예 > location : > 바로 에러 나타남)
+        */
+        header("location: register_view.php?error=비밀번호가 비어있습니다&$user_info");
+        exit();
+    }
+    else if(empty($pass2)){//pass2에 대한 에러 체크
+        header("location: register_view.php?error=비밀번호 확인란이 비어있습니다&$user_info");
+        exit();
+    }
+    else if($pass1 !== $pass2){//비밀번호 입력란과 확인란이 동일한지 확인해 봄
+        header("location: register_view.php?error=비밀번호가 일치하지 않습니다.&$user_info");
+        exit();
+    }
+    else {
+        //암호화
+        $pass1 = password_hash($pass1, PASSWORD_DEFAULT);
+
+        //sql문은 php 안에서 ""(쌍따옴표) 안에 기재를 해야 한다.
+        $sql_same = "SELECT * FROM member where mb_id = '$user_id' and mb_nick = '$user_nick'"; 
+        //mysqli_query(db 접속, 명령을 수행해라);
+        $order = mysqli_query($db, $sql_same);
+
+        if(mysqli_num_rows($order) > 0){ //만약 아이디 또는 닉네임이 이미 존재한다면~
+            header("location: register_view.php?error=아이디 또는 닉네임이 이미 존재합니다.&$user_info");
+            exit();
+        }
+        else{//중복이 없다면 insert into를 시행~
+            $sql_save = "insert into member(mb_id, mb_nick, password) values('$user_id','$user_nick','$pass1')";
+            $result = mysqli_query($db, $sql_save);
+
+            if($result){//가입이 성공적이라면
+                header("location: register_view.php?success=성공적으로 가입 되었습니다.");
+                exit();
+            }
+            else{//어떤한 이유에서든지 성공적으로 저장되지 않는다면
+                header("location: register_view.php?error=가입에 실패하였습니다.&$user_info");
+                exit();
+            }
+        }
+    }
+}
+
+else{
+    // 에러 메시지
+    header("location: register_view.php?error=알 수 없는 오류가 발생하였습니다.&$user_info");
+    exit();
+}
+
+?>

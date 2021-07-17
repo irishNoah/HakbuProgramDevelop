@@ -1,0 +1,31 @@
+<?php
+
+// B 개발자가 사용한 3개의 함수
+// trim(), stripslashes(), htmlspecialchars()
+
+echo '<br><br>=========== stripslashes() ===========<br><br>';
+echo '<br>';
+
+$str1 = '나는 "초콜릿"을 좋아해';
+echo $str1;
+echo '<br>';
+// addslashes()를 사용하면 " 앞에 \(Won 모양, 즉 백슬러쉬)이 붙음
+echo addslashes($str1); 
+echo '<br>';
+$str2 = "aaa\bbb\aaa\bbb\aaa";
+echo $str2;
+echo '<br>';
+// stripslashes()를 사용하면 \(백슬러쉬)가 사라짐
+echo stripslashes($str2);
+echo '<br>';
+
+/*
+만약 $add라는 변수에 addslashes($str1);을 대입하고
+echo htmlspecialchars($add);을 실행하면 출력 자체는
+<나는 \"초콜릿\"을 좋아해>와 같은 형식으로 출력이 된다.
+htmlspecialchars()는 모든 특수기호를 문자화 시킨다.
+*/
+$add = addslashes($str1);
+echo htmlspecialchars($add);
+
+?>

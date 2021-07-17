@@ -1,0 +1,71 @@
+<!-- 
+<?php
+include('db.php');
+?>
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>회원가입</title>
+
+    <!-- 스타일시트 -->
+    <!-- <link rel="stylesheet" type="text/css" href="css/join_black.css"> -->
+    <link rel="stylesheet" type="text/css" href="css/join.css">
+</head>
+<body>        
+    <!-- form 시작 -->
+    <!-- 실제 서버와 연동 -->
+    <!-- post > "폼을 전송한다" = submit 속성 값을 준, 버튼을 누르면 <form> 전송 -->
+    <!-- 보안 전송을 위해 post를 이용 -->
+    <form action="register_server.php" method="post">
+    <h2>회원가입</h2>
+
+    <!-- 이곳은 html 작업창이기 때문에 php 언어를 사용하고자 한다면 
+    한 줄 마다 php 태그를 붙여줘야 한다
+    -->
+    <?php if(isset($_GET['error'])){ ?>
+    <p class="error"><?php echo $_GET['error']; ?></p>
+    <?php } ?>
+
+    <?php if(isset($_GET['success'])){ ?>
+    <p class="error"><?php echo $_GET['success']; ?></p>
+    <?php } ?>
+
+    <lable>아이디</lable>
+    <!-- 회원가입이나 로그인 등 어떤 정보는 기재하고, 어떤 정보는 그렇지 않을 경우
+    기재한 정보에 대해서는 실수로 저장 버튼 등을 눌러도 사라지지 않고 남아있게 한다.
+    -->
+    <?php if(isset($_GET['user_id'])){ ?>
+        <input type="text" placeholder="아이디 입력" name="user_id" value="<?php echo $_GET['user_id']; ?>"> 
+    <?php } else{ ?>
+        <input type="text" placeholder="아이디 입력" name="user_id">
+    <?php } ?>
+
+
+    <lable>닉네임</lable>
+    <?php if(isset($_GET['user_id'])){ ?>
+        <input type="text" placeholder="닉네임 입력" name="user_nick" value="<?php echo $_GET['user_nick']; ?>"> 
+    <?php } else{ ?>
+        <input type="text" placeholder="닉네임 입력" name="user_nick">
+    <?php } ?>
+
+    <lable>비밀번호</lable>  
+    <input type="text" placeholder="비밀번호 입력" name="pass1">
+
+    <lable>비밀번호 확인</lable>
+    <!-- 만약 type="password"를 안하면 비밀번호의 값이 그래도 비밀번호 확인에서도 보여지게 된다. -->
+    <!-- 그러나 type="password" 사용 시 비밀번호 확인란에는 비밀번호가 가려져서 보이게 된다. -->
+    <input type="password" placeholder="비밀번호 확인 입력" name="pass2">
+
+    <button type="submit" name="save">저장</button>
+
+    <a href="login_view.php" class="save">이미 회원이신가요?(로그인 페이지)</a>
+
+    </form>
+    <!-- form 끝 -->
+</body>
+</html>

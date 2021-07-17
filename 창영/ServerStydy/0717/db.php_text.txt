@@ -1,0 +1,50 @@
+<?php
+
+//$변수명 = mysqli_connect('localhost','root','비밀번호','테이블이름');
+$db = mysqli_connect('localhost','root','1234','level1');
+// $db = mysqli_connect('localhost','root','1234','level') or die('DB 접속 실패'); //에러 테스트 용
+
+if($db){//접속 성공 시
+    echo "DB 접속 성공"; //echo는 print 명령어
+    echo '<br>';
+}
+
+else {//접속 실패 시
+    echo "DB 접속 실패"; //echo는 print 명령어
+    echo '<br>';
+}
+
+// echo '<br>';
+// echo '<br>';
+
+// if(!$db){
+//     echo '에러를 표시해줘 : '.mysqli_connect_errno();
+// }
+
+// echo '<br>';
+// echo '<br>';
+
+// if(!$db){
+//     echo '에러를 표시해줘 : '.mysqli_connect_error();
+// }
+
+// echo '<br>';
+// echo '<br>';
+
+// if(mysqli_connect_errno()){
+//     echo '에러를 표시해줘 : '.mysqli_connect_error();
+// }
+
+// echo '<br>';
+// echo '<br>';
+
+// if(mysqli_connect_error()){
+//     echo '에러를 표시해줘 : '.mysqli_connect_errno();
+// }
+
+/* 
+die()는 exit()의 별칭이다. alias(별명, 별칭)
+*/
+
+
+?>
