@@ -1,0 +1,10 @@
+<?php
+
+// htmlspecialchars() > 이걸 통해서 기초적인 해킹 부분에 대해 무력화할 수 있음
+
+$str1 = '<script>alert("넌 해킹 당했어");</script>';
+
+// echo $str1; 
+echo htmlspecialchars($str1);
+
+?>

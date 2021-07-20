@@ -1,0 +1,12 @@
+<?php 
+//로그아웃 구현
+session_start();
+
+session_unset();
+
+session_destroy();
+
+//로그아웃 이후 로그인 뷰로 바로 넘어가게 함
+header("location: login_view.php");
+exit();
+?>

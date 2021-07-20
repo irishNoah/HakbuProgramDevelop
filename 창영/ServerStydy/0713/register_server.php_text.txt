@@ -1,0 +1,135 @@
+<?php
+
+/* db.php에 있는 변수를 이 php에서도 사용하기 위해서 선언
+만약 include를 사용안하고 다른 파일에 있는 변수를 여기에서도 선언 후
+사용 시 error 발생 */
+include('db.php'); 
+
+if(isset($_POST['user_id']) && isset($_POST['user_nick']) && isset($_POST['pass1']) && isset($_POST['pass2'])){
+    // 보안을 더욱 강화(secure 코딩, 보안 코딩)
+    $user_id = mysqli_real_escape_string($db, $_POST['user_id']); //남이 함부로 sql을 변경할 수 없도록 함
+    $user_nick = mysqli_real_escape_string($db, $_POST['user_nick']);
+    $pass1 = mysqli_real_escape_string($db, $_POST['pass1']);
+    $pass2 = mysqli_real_escape_string($db, $_POST['pass2']);
+
+    // 에러를 체크
+    if(empty($user_id)){//user_id에 대한 에러 체크
+        /* 
+        alert('아이디가 비어있습니다'); 자체만 존재한다면
+        회원이 아이디 입력을 안하고 저장 누를 경우
+        다음 화면에 '아이디가 비어있습니다'라는 팝업창만 존재하게 됨.
+        따라서 팝업창에 "확인 버튼을 눌렀을 때 다시 회원가입 화면으로 돌아가게
+        하기 위해서는 history.back();이 필요함"
+        */
+        /*
+        echo 
+        "<script>
+        alert('아이디가 비어있습니다');
+        history.back();
+        </script>";
+        */
+        header("location: register_view.php?error=아이디가 비어있습니다");
+        exit();
+    }
+    else if(empty($user_nick)){//user_nick에 대한 에러 체크
+        /* 
+        echo  
+        "<script>
+        alert('닉네임이 비어있습니다');
+        location.replace('register_view.php');
+        </script>";
+        */
+        header("location: register_view.php?error=닉네임이 비어있습니다");
+        exit();
+    }
+    /* 
+    history.back();과 location.replace();의 차이점
+    history.back();은 되돌아온 개념, 즉 브라우저 어딘가에 흔적을 남김
+    location.replace();은 되돌아오는 것이 아니라 경로를 이동, 즉 흔적을 남기지 않음
+    둘 중 무엇을 사용하든 상관 없으나
+    대부분의 개발자는 경로를 이동시키는 location.replace();을 더 많이 사용함
+    */
+    else if(empty($pass1)){//pass1에 대한 에러 체크
+        /*
+        location: register_view.php?error=비밀번호가 비어있습니다"에서
+        location:은 절대 띄어쓰기 하면 안 됨(예 > location : > 바로 에러 나타남)
+        */
+        header("location: register_view.php?error=비밀번호가 비어있습니다");
+        exit();
+    }
+    else if(empty($pass2)){//pass2에 대한 에러 체크
+        header("location: register_view.php?error=비밀번호 확인란이 비어있습니다");
+        exit();
+    }
+    else if($pass1 !== $pass2){//비밀번호 입력란과 확인란이 동일한지 확인해 봄
+        header("location: register_view.php?error=비밀번호가 일치하지 않습니다.");
+        exit();
+    }
+    else {
+        //암호화
+        /* 
+        md5()는 양방향 암호이다.
+        양방향 암호의 단점 : 복호화 가능
+
+        반면 password_hash()는 단방향 암호이다.
+        따라서 md5()에 비해 강한 암호화 기능이다.
+        사용 예시를 통해 출력한 값을 보면
+        위에 것(md5()이용)은 고정적이지만 
+        밑에 것(password_hash() 이용)은 새로 고침을 할 때마다
+        값이 변경 되는 것을 알 수가 있다.
+
+        따라서 보안적인 측면을 고려했을 때
+        password_hash()를 사용하는 것이 더 좋다.
+        [사용 예시]
+        $md5 = md5($pass1);
+        echo $md5;
+
+        echo '<br>';
+        echo '<br>';
+
+        $hash = password_hash($pass2, PASSWORD_DEFAULT);
+        echo $hash;
+        */
+        $pass1 = password_hash($pass1, PASSWORD_DEFAULT);
+
+        //아이디 또는 닉네임, 또는 아이디와 동시에 닉네임 중복체크
+        //SELECT `no`, `mb_id`, `mb_nick`, `password` FROM `member` WHERE 1
+        /*
+        *가 `no`, `mb_id`, `mb_nick`, `password`를 대체한다.
+        */
+        //sql문은 php 안에서 ""(쌍따옴표) 안에 기재를 해야 한다.
+        $sql_same = "SELECT * FROM member where mb_id = '$user_id' and mb_nick = '$user_nick'"; 
+        /* SQL을 사용한 변수(예 : 위에 있는 $sql_same)는 
+        Database와 연관이 있는 것이기 때문에
+        mysqli_query()와 같은 것을 통해 db를 참조해야 한다.
+        */
+        //mysqli_query(db 접속, 명령을 수행해라);
+        $order = mysqli_query($db, $sql_same);
+
+        if(mysqli_num_rows($order) > 0){ //만약 아이디 또는 닉네임이 이미 존재한다면~
+            header("location: register_view.php?error=아이디 또는 닉네임이 이미 존재합니다.");
+            exit();
+        }
+        else{//중복이 없다면 insert into를 시행~
+            $sql_save = "insert into member(mb_id, mb_nick, password) values('$user_id','$user_nick','$pass1')";
+            $result = mysqli_query($db, $sql_save);
+
+            if($result){//가입이 성공적이라면
+                header("location: register_view.php?success=성공적으로 가입 되었습니다.");
+                exit();
+            }
+            else{//어떤한 이유에서든지 성공적으로 저장되지 않는다면
+                header("location: register_view.php?error=가입에 실패하였습니다.");
+                exit();
+            }
+        }
+    }
+}
+
+else{
+    // 에러 메시지
+    header("location: register_view.php?error=알 수 없는 오류가 발생하였습니다.");
+    exit();
+}
+
+?>
