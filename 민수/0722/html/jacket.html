@@ -1,0 +1,118 @@
+<?php 
+session_start();
+/* 세선 전역변수를 사용할 페이지의 상단부에 배치하면 된다. */
+?>
+
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>StyleLab Test</title>
+        <meta charset="utf-8">
+	    <meta name="keywords" content="HTML5, CSS, JQUERY">
+        
+        <!--반응형 웹-->
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        
+        <!--글자폰트-->
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Nanum+Gothic+Coding&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Hi+Melody&family=Nanum+Gothic+Coding&family=Sunflower:wght@300&display=swap" rel="stylesheet">
+
+        <!--이모티콘-->
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.2/css/all.css">
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.2/css/v4-shims.css">
+        
+        <link rel ="stylesheet" type ="text/css" href ="../CSS/main.css">
+    </head>
+    
+    <body>
+        <div class="primary">
+            <div>
+                <a href="HTML/Login.php"><i class="fas fa-sign-in-alt"></i>로그인</a>
+                <a href="" ><i class="fas fa-sign-out-alt"></i>로그아웃</a>
+                <a href="HTML/jjim.php" ><i class="fas fa-heart" style="color: red;"></i>찜</a>
+                <a href="HTML/size.php" ><i class="fas fa-user-cog"></i>사이즈</a>
+                <a href="HTML/jungbo.php" ><i class="fas fa-id-badge"></i>계정</a>
+            </div>
+        </div>
+        <!-- 헤더영역 시작  -->
+        <header class="header">
+            <span id="logo">
+                <div><a href="main.php" style="color: white;">SIZELAB</a></div>
+            </span>
+            <span class = "box">
+                <div class="container-1">
+                  <span class="icon"><i class="fa fa-search"></i></span>
+                  <input type="search" id="search" placeholder="Search..." style="height:35px;" />
+                </div>
+            </span>
+		</header>
+		<!-- 헤더영역 끝 -->
+        
+        <!-- 콘텐츠 및 섹션 영역 시작 -->
+        <div class="content_div">
+            <article>
+                <header>
+                    <div class ="tab_wrapper">
+                    <div class="tab_content">
+                        <div class ="tab"><a href="../main.html">메인</a>
+                        </div>
+                        <div class ="tab"><a href="knit.html">니트</a>
+                        </div>
+                        <div class ="tab"><a href="jacket.html">자켓</a>
+                        </div>
+                        <div class ="tab"><a href="long.html">롱슬리브</a>
+                        </div>
+                        <div class ="tab"><a href="shirt.html">셔츠</a>
+                        </div>
+                        <div class ="tab"><a href="">가디건</a>
+                        </div>
+                        <div class ="tab"><a href="">후드티</a>
+                        </div>
+                        <div class ="tab"><a href="">후드집업</a>
+                        </div>
+                        <div class ="tab"><a href="">맨투맨</a>
+                        </div>
+                
+                        <div class="conbox con1">
+                           <section>
+                    <div class ="itemtitle">자켓</div>
+                    <div style="width: 1200px;background-color: white;"class= "row tm-gallary">
+                    </div>       
+                </section>
+                        </div>
+                        
+                        
+                        
+                    </div>
+                    </div>
+                </header>
+            </article>
+
+        </div>
+        <!-- 콘텐츠 및 섹션 영역 끝 -->
+        
+        <!-- 푸터 영역 시작 -->
+        <div class="footer">
+            <footer>
+                <b>
+                    <font color="white">footer 태그: 사이트의 제작자, 주소, 저작권 정보등을 주로표시</font>
+                </b>
+                <details>
+                    <!-- summary태그는 크롬 브라우저에서 작동한다. 익스플로러 브라우저에서는 작동 안됨 -->
+                    <summary style="color: white;">
+                        <font color="white">Copyright</font>
+                    </summary>
+                    <p>
+                        <font color="white">이 홈페이지의 저작권은 박창영(교회오빠) 에게~~</font>
+                    </p>
+                </details>
+            </footer>
+        </div>
+        <!-- 푸터 영역 끝 -->
+    </body>
+
+    
+</html>

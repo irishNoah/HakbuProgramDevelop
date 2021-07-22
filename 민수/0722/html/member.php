@@ -13,8 +13,39 @@ include('db_test.php');
     <meta name="keywords" content="HTML5, CSS, JQUERY">
     <link rel="stylesheet" type="text/css" href="../CSS/Style.css">
     <title>회원가입 | SizeLab</title>
+	<script>
+        function checkid(){
+            var ID = document.getElementById("uid").value;
+            var popupX = (document.body.offsetWidth / 2) - (400 / 2);
+            var popupY = 200;
+            if(ID)
+            {
+                url = "id_check.php?ID="+ID;
+                window.open(url,"chkid", 'width=400, height=100, left='+ popupX + ', top='+ popupY);
+            }
+            else
+            {
+                alert("아이디를 입력하세요");
+            }
+            }
+
+		function checknick(){
+		var nickname = document.getElementById("unick").value;
+		var popupX = (document.body.offsetWidth / 2) - (400 / 2);
+		var popupY = 200;
+		if(nickname)
+		{
+			url = "nick_check.php?nickname="+nickname;
+			window.open(url,"chknick", 'width=400, height=100, left='+ popupX + ', top='+ popupY);
+		}
+		else
+		{
+			alert("닉네임을 입력하세요");
+		}
+		}
+    </script>
     <style>
-    @media(max-height: 1000px) {
+    @media(max-height: 1200px) {
   .container{
     height: 100%;
   }
@@ -48,7 +79,7 @@ include('db_test.php');
 				<?php } ?>
 
 				<?php if(isset($_GET['success'])){ ?>
-				<p class="error"><?php echo $_GET['success']; ?></p>
+				<p class="success"><?php echo $_GET['success']; ?></p>
 				<?php } ?>
 				<br>
 
@@ -57,24 +88,14 @@ include('db_test.php');
 						<label>아이디 </label><br>
 						<!-- <input type="text" class="n-input2" id="memberId" name="memberId" placeholder="아이디 입력(5~11자)" minlength="5" maxlength="11"> -->
 
-						<input type="text" class="n-input2" placeholder="아이디 입력(5~11자)" name="ID">
+						<input type="text" class="n-input2" placeholder="아이디 입력(5~11자)" name="ID" ID="uid">
+
+    						<button type="submit"  class="jungbok" onclick="checkid();">중복검사</button>
+
+
 						<!-- <p id="hLayerid"></p> -->
 					</div>
-					<br>
-					<div>
-						<label>아이디 재입력</label> <!-- 아이디 중복 확인 전 test -->
-						<div>
-							<input type="password" class="n-input2" placeholder="아이디 재입력" name="ID_CK">
 
-							<!-- <button type="button" class="btn" onclick="togglePassword('password', this);" >
-								<i>아이디 중복 확인</i>
-							</button> -->
-
-							<!--<button type="submit" class="btn" name="ID_CK">
-								아이디 중복 확인
-							</button> -->
-						</div>
-					</div>
 					<br>
 					<div>
 						<label>비밀번호 </label>
@@ -103,7 +124,9 @@ include('db_test.php');
 						<div>
 							<!-- <input type="text" class="n-input2 input" id="nickname" name="nickname" minlength="8" placeholder="닉네임 입력" > -->
 
-							<input type="text" class="n-input2" placeholder="닉네임 입력" name="nickname">
+							<input type="text" class="n-input2" placeholder="닉네임 입력" name="nickname" ID="unick">
+
+      						<button type="submit" id="jungbok" class="jungbok" onclick="checnick();">중복검사</button>
 
 							<!-- <p id="nicknameValidMessage"></p> -->
 
@@ -115,13 +138,6 @@ include('db_test.php');
 							<!-- <button type="submit" class="btn" name="nickname_CK">
 								닉네임 중복 확인
 							</button> -->
-						</div>
-					</div>
-					<br>
-					<div>
-						<label>닉네임 다시 입력</label> <!-- 닉네임 중복 확인 전 test -->
-						<div>
-							<input type="password" class="n-input2" placeholder="닉네임 재입력" name="nickname_CK">
 						</div>
 					</div>
 					<br>
@@ -141,6 +157,7 @@ include('db_test.php');
 							</button> -->
 						</div>
 					</div>
+					<br>
 					<div>
 						<label>이메일 </label>
 						<div id = "emailFromLayer">
@@ -150,12 +167,6 @@ include('db_test.php');
 							<?php } else{ ?>
 							<input type="text" class="n-input2" placeholder="이메일 입력" name="user_email">
 							<?php } ?>
-
-
-              	<button type="button" class="btn onclick="togglePassword('password', this);">이메일 인증하기</button>
-                <?php  ?>
-                  <input type="email" class="n-input2 input" id="email" name="email" maxlength="50" placeholder="인증 번호를 입력해주세요" autocomplete="off" value="">
-    						<p id="hLayeremail"></p>
 
 
 
@@ -205,5 +216,9 @@ include('db_test.php');
 		</div>
 	</div>
 	</form>
+
+
+
+</form>
 </body>
 </html>
