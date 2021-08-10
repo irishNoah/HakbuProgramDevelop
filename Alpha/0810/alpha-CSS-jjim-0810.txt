@@ -1,0 +1,159 @@
+@charset "utf-8";
+/* 메인 영역 */
+
+body{
+    background-color: #F2F2F2;
+}
+/* 로그인 및 설정 영역*/
+.primary{ 
+  /* 로그인, 로그아웃, 장바구니 등 기본 셋팅 값에 대한 텍스트 및 버튼 영역 CSS */
+  position: relative;
+  font-weight: bold;
+  width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.primary a {
+    font-size: 15px;
+    text-decoration: none;
+    color: black;
+    padding-left: 3px;
+    display: inline-block;
+    margin-right: 5px;
+}
+.primary a:hover{
+    color:white;
+}
+/* 로그인 및 설정 영역*/
+
+/*헤드영역*/
+.header {
+    background-color: black;
+    position: relative;
+    width: 1200px;
+    margin: 0 auto;
+    display:block;
+    height:100px;
+    font-family: 'Nanum Gothic Coding', monospace;
+}
+#logo{
+    display: inline-block;width: 220px;
+    margin-left: 5%;color:white;font-weight: bold;margin-top:1.55%;font-size: 60px;
+}
+#logo div{
+    background-color: black;
+}
+a{
+    text-decoration:none;
+}
+.box{
+  display: inline-block;
+  width: 400px;
+  height: 35px;
+}
+.container-1{
+width: 400px;
+vertical-align: middle;
+white-space: nowrap;
+position: relative;
+}
+.container-1 input#search{
+width: 400px;
+height: 100%;
+background-color: white;
+border: none;
+font-size: 15px;
+float: left;
+color: #63717f;
+padding-left: 45px;
+-webkit-border-radius: 5px;
+-moz-border-radius: 5px;
+border-radius: 5px;
+}
+.container-1 input#search::-webkit-input-placeholder {
+   color: gray;
+}
+ 
+.container-1 .icon{
+  position: absolute;
+  margin-left: 17px;
+  margin-top: 12px;
+  z-index: 1;
+  color: gray;
+}
+.container-1 .icon i{background-color:white;}
+.container-1 input#search:hover, .container-1 input#search:focus, .container-1 input#search:active{
+    outline:none;
+  }
+/*헤드영역*/
+
+
+/*페이지 내용 영역*/
+.content_div {
+    position: relative;
+    width: 1200px;
+    margin: 0 auto;
+/* 위치 및 너비 설정영역*/
+}
+
+/* 테이블 디자인 설정*/
+.row {
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+  margin-right: -15px;
+}
+.tm-gallery {
+  margin-bottom: 80px;
+}
+.tm-gallery-page {
+    max-width: 280px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 50px;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+}
+.tm-gallery-page {
+    max-width: 1200px;
+}
+/* 테이블 디자인 설정 */
+
+.padd {
+    padding-right: 25px;
+    padding-left: 25px;
+    margin-bottom: 40px;
+    font-family: 'Nanum Gothic Coding', monospace;
+    font-size: 15px;
+    /* 이미지간의 너비,높이 및 폰트 설정*/
+}
+
+.max-width{
+  max-width: 270px;
+}
+.max-width:hover{
+    width:250px;
+    opacity: 1;
+    box-shadow:  1px 1px 1px 1px gray;
+    /* 마우스 올리면 변경*/
+}
+/*페이지 내용 영역*/
+
+.footer {
+    background-color: black;
+    position: relative;
+    width: 1200px;
+    margin: 0 auto;
+    /* footer 영역 */
+}
+
+.main {
+  margin-left: 160px; 
+  font-size: 28px; 
+  padding: 0px 10px;
+}
