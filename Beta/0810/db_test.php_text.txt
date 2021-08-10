@@ -1,0 +1,14 @@
+<?php
+// 데이터베이스와 연동
+$db = mysqli_connect('localhost','root','1234','sizelab_db');
+
+function ID_CK($sql_ID){
+    global $db;              // 전역변수 $db 선언
+    return $db->query($sql_ID); /
+  }
+
+  function nick_CK($sql_nick){
+    global $db;              // 전역변수 $db 선언
+    return $db->query($sql_nick); 
+  } 
+?>
