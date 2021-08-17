@@ -1,0 +1,68 @@
+import cv2 as cv
+import numpy as np
+import matplotlib.pyplot as plt
+import PIL
+# %matplotlib inline
+
+def show_img_compar(img_1):
+    # 기존 > f, ax = plt.subplots(1, 2, figsize=(10,10))
+    f, ax = plt.subplots(1, 1, figsize=(10,10))
+    ax.imshow(img_1) #imshow: 이미지 보여주기
+    ax.axis('off') #불필요한 1행의 x축 없애기
+    f.tight_layout() #tight_layout(): 그래프(이미지 사이)의 레이아웃 조절
+
+img = cv.imread("cloth.jpg")
+# cvtColor():사진의 색깔을 바꿔주는 함수
+img = cv.cvtColor(img, cv.COLOR_BGR2RGB)
+
+
+# 절대크기(너비,높이)
+dim = (500, 300)
+
+#이미지 크기 변환 함수: cv.resize(입력 이미지, 절대크기,보간법)
+img = cv.resize(img, dim, interpolation = cv.INTER_AREA) #cv.INTER_AREA: 영역보간법
+
+show_img_compar(img)
+
+# pip install sklearn # sklearn 설치 안되어 있을 시 이거 설치 후 실행(VS CODE에서는 command 창에서)
+
+from sklearn.cluster import KMeans
+
+clt= KMeans(n_clusters = 2) # 2개 클러스터로 모델 생성
+
+# fit: 모델을 학습시켜 모델 객체에 저장하는 함수
+#reshape(행,열): 행,열로 된 2차원 배열을 재구성하는 함수 
+clt.fit(img.reshape(-1, 3)) 
+
+clt.labels_
+
+# 가장 높은 비율 2가지 색에 대한 각각의 RGB 값을 구함 
+clt.cluster_centers_
+
+# clt.cluster_centers_를 arr라는 변수에 대입
+arr = clt.cluster_centers_
+
+# 배열을 차례대로 R G B 값에 맞게 넣어줌
+# 그 이후에 round 함수를 통해 반올림 해주고 그 값을 정수로 변환
+r1 = arr[0][0]
+b1 = arr[0][1]
+c1 = arr[0][2]
+
+r1 = int(round(r1, 0))
+b1 = int(round(b1, 0))
+c1 = int(round(c1, 0))
+print(r1)
+print(b1)
+print(c1)
+print("\n")
+
+r2 = arr[1][0]
+b2 = arr[1][1]
+c2 = arr[1][2]
+
+r2 = int(round(r2, 0))
+b2 = int(round(b2, 0))
+c2 = int(round(c2, 0))
+print(r2)
+print(b2)
+print(c2)
