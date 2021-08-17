@@ -1,0 +1,62 @@
+import cv2
+import numpy as np
+import pandas as pd
+
+img = cv2.imread("img_2.jpg") 
+img=cv2.resize(img,(700,500))
+
+clicked = False # 클릭 비활성화
+r = g = b = xpos = ypos = 0 #0값으로 초기화
+
+#Reading csv file with pandas and giving names to each column
+index=["color","color_name","hex","R","G","B"]
+csv = pd.read_csv('colors.csv', names=index, header=None) # 파일 불러오기
+
+#모든 색상으로부터 최소 거리를 계산하고 가장 일치하는 색상을 얻는 함수(가장 가까운 색 구하기)
+def getColorName(R,G,B): 
+    minimum = 10000
+    for i in range(len(csv)):
+        d = abs(R- int(csv.loc[i,"R"])) + abs(G- int(csv.loc[i,"G"]))+ abs(B- int(csv.loc[i,"B"]))
+        if(d<=minimum):
+            minimum = d
+            cname = csv.loc[i,"color_name"]
+    return cname
+
+#마우스 더블클릭 했을 때 x,y 좌표를 가져오는 함수
+def draw_function(event, x,y,flags,param):
+    if event == cv2.EVENT_LBUTTONDBLCLK: # 마우스 왼쪽 버튼을 눌렀을 때 활성화
+        global b,g,r,xpos,ypos, clicked
+        clicked = True
+        xpos = x
+        ypos = y
+        b,g,r = img[y,x]
+        b = int(b) 
+        g = int(g)
+        r = int(r)
+cv2.namedWindow('color detection by programming_fever')  #이미지 상단타이틀
+cv2.setMouseCallback('color detection by programming_fever',draw_function) #윈도우에 마우스 이벤트가 발생했을 때, 특정한 함수에 이벤트를 전달해 실행
+
+while(1):
+
+    cv2.imshow("color detection by programming_fever",img) # 이미지 보여주기
+    if (clicked): # 마우스를 클릭하면
+   
+        #사각형 만들기(이미지, 시작점, 끝점, 색상, 두께)-1이 전체 사각형을 채웁니다.
+        cv2.rectangle(img,(20,20), (750,60), (b,g,r), -1)
+
+        #표시할 텍스트 문자열 작성(색상 이름 및 RGB 값)
+        text = getColorName(r,g,b) + ' R='+ str(r) +  ' G='+ str(g) +  ' B='+ str(b)
+        
+        #텍스트 작성(이미지,문자,위치,폰트(두께0-7),폰트크기,폰트컬러,폰트 두께,라인타입 )
+        cv2.putText(img, text,(50,50),2,0.8,(255,255,255),2,cv2.LINE_AA)
+
+        #매우 밝은 색상의 경우 검은색으로 텍스트를 표시합니다.
+        if(r+g+b>=600):
+            cv2.putText(img, text,(50,50),2,0.8,(0,0,0),2,cv2.LINE_AA)
+            
+        clicked=False
+
+    if cv2.waitKey(20) & 0xFF ==27:
+        break
+    
+cv2.destroyAllWindows() #함수는 열린 모든 창을 닫습니다.
