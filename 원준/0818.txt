@@ -1,0 +1,40 @@
+import os, glob
+import os.path
+import os
+import sys
+import glob
+import cv2
+
+img_files = glob.glob('./dataset/*.jpg')
+
+# 전체화면으로  jinmi 창 생성
+cv2.namedWindow('jinmi',cv2.WINDOW_NORMAL)
+cv2.setWindowProperty('jinmi', cv2.WND_PROP_FULLSCREEN, cv2.WINDOW_FULLSCREEN)
+cv2.resizeWindow('jinmi', 500, 500)
+
+# 슬라이드 쇼 반복을 위한 반복문
+count = len(img_files)
+index = 0
+
+while True:
+    img = cv2.imread(img_files[index])
+    img2 = img_files[index]
+
+	# 예외처리
+    if img is None:     
+        print("이미지를 불러오는데 실패했습니다.")
+        break
+        
+	# 경로출력
+    print(img2)
+    cv2.imshow('jinmi', img)
+    # ESC가 입력되면 break
+    if cv2.waitKey(1000) == 27:     
+        break
+
+	# index가 이미지 리스트보다 커지거나 같아지면 break
+    index += 1      
+    if index >= count :
+        break
+
+cv2.destroyAllWindows()
