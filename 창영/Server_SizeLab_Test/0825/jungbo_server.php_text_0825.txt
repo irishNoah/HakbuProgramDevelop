@@ -14,4 +14,7 @@
 
     mysqli_query( $db, $inf_size_change );
     mysqli_query( $db, $inf_tone_change );
+
+    echo "<script>alert('성공적으로 정보변경이 완료되었습니다.')</script>";
+    echo "<meta http-equiv='refresh' content='0;url=../main.php'>";
 ?>

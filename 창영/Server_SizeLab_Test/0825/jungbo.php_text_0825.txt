@@ -37,7 +37,8 @@ include('db_test.php');
 			<br>
 			<div>
 				<div>
-					<label for="memberId">아이디 : </label>
+					<label for="memberId">아이디 : </label> <!-- 확인하고 싶은 정보는 login_server에서 if(password_verify($password, $hash)
+					                                         부분에서 추가해주기 -->
 					<?php
 					$ID = $_SESSION['ID'];
 					echo "$ID"
@@ -60,6 +61,28 @@ include('db_test.php');
 					?>
 				</div>
 				<br>
+				<div>
+					<label for="size">현재 사이즈 : </label>
+					<?php
+					$size = $_SESSION['size'];
+					echo "$size"
+					?>
+				</div>
+				<br>
+				<div>
+					<label for="tone">현재 피부톤 : </label>
+					<?php
+					$tone = $_SESSION['tone'];
+					if($tone == 'ws')    
+						echo ("봄 웜톤");
+					else if($tone == 'cs')
+						echo ("여름 쿨톤");
+					else if($tone == 'wf')
+						echo ("가을 웜톤");
+					else
+						echo ("겨울 쿨톤"); 	
+					?>
+				</div>
 			</div>
 
 			<div class="n-member-area form-area">
