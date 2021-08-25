@@ -1,0 +1,17 @@
+<?php
+    include('db_test.php');
+    session_start();
+
+    $ID = $_SESSION['ID'];
+
+    //새로운 사이즈에 해당하는 변수 $size 선언
+    $newsize = $_POST['newsize'];
+    //새로운 톤에 해당하는 변수 $size 선언
+    $newtone = $_POST['newtone'];
+
+    $inf_size_change = "UPDATE member SET size = '" . $newsize . "' WHERE ID = '" . $ID . "';";
+    $inf_tone_change = "UPDATE member SET tone = '" . $newtone . "' WHERE ID = '" . $ID . "';";
+
+    mysqli_query( $db, $inf_size_change );
+    mysqli_query( $db, $inf_tone_change );
+?>
